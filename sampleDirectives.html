@@ -114,7 +114,7 @@
 							console.log("<sample-compile> PRE - mouseenter triggered");
 						})
 					},
-					post: function(scope, element, attrs){
+					post: function(scope, element, attrs){ // Same as link *
 						// Safe - for dom transformation
 						// Executed AFTER child elements are linked
             			console.log("<sample-compile> POST (link) executing.")
@@ -175,6 +175,7 @@
 
 	.directive('colors', function(){
 		return {
+            restrict: "AE",
 			link: function(scope, element, attrs){
 				element.css("background-color", "yellow")
 
@@ -188,6 +189,19 @@
 		}
 	})
 
+	.controller('Controller', ['$scope', function($scope) {
+	  	this.name = 'King Leonidas';
+	}])
+	.directive('myDialog', function() {
+		return {
+			restrict: 'E',
+			transclude: true, // Controllers are available to the template/templateUrl
+			template: '<div class="alert" ng-transclude></div>'
+			// templateUrl: 'my-dialog.html'
+		};
+	});
+
+
 	
 
 	</script>
@@ -198,8 +212,11 @@
  		<sample-link draggable colors class="box"></sample-link>
  		<sample-compile class="box"></sample-compile>
  		<sample-scope class="box" name="Andriana Lima" customer="person" data="abc"></sample-scope>
+ 		<colors draggable class="box"></colors>
  		<!-- <sample-scope status="{{status}}"></sample-scope> -->
-
+ 		<div ng-controller="Controller as ctrl" class="box">
+		  <my-dialog>Check out the contents, {{ctrl.name}}!</my-dialog>
+		</div>
     </div>
 
 </body>
