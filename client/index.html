@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Directives</title>
+	<style type="text/css">
+	body{
+		width: 800px;
+	}
+	.box{
+		display: inline-block;
+		width: 200px;
+		height: 200px;
+		font-size: 1.5em;
+		border: 1px solid black;
+		vertical-align: top;
+	}
+	</style>
+    <script src="/js/lib/jquery-1.9.1.js"></script>
+    <script src="/js/lib/jquery-ui.js"></script>
+    <!-- <script data-require="angular.js@1.3.0-beta.19" data-semver="1.3.0-beta.19" src="https://code.angularjs.org/1.3.0-beta.19/angular.js"></script> -->
+    <script type="text/javascript" src="/js/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="/js/lib/angular/angular-route.js"></script>
+	<script type="text/javascript" src="/js/modules/modules.js"></script>
+	<script type="text/javascript" src="/js/directives/directives.js"></script>
+	<script type="text/javascript" src="/js/services/services.js"></script>
+	<script type="text/javascript" src="/js/controllers/controllers.js"></script>
+
+</head>
+<body>
+ 	<div ng-app="app">
+ 		<sm-thread my-attribute="{thread:'general'}"></sm-thread>
+ 		<sm-thread my-attribute="{thread:'other'}"></sm-thread>
+
+    </div>
+</body>
+</html>
