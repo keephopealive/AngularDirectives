@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-12">
 
-		<h3 ng-bind="x"></h3>
+		<h3 ng-bind="threadName"></h3>
 		<section class="container">
 
 <div ng-repeat="post in posts | startFrom:currentPage*pageSize | limitTo:pageSize">
@@ -9,16 +9,11 @@
 	<a ng-href="#/post/{{post.id}}"><span ng-bind="post.rating"></span> <h5 ng-bind="post.title"></h5></a>
 </div>
 <hr>
-
-<button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" class="btn btn-default">
-    Previous
-</button>
+<button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" class="btn btn-default">Previous</button>
 <span ng-bind="currentPage+1"></span>/<span ng-bind="numberOfPages()"></span>
-<button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1" class="btn btn-default">
-    Next
-</button>
+<button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1" class="btn btn-default">Next</button>
 
 		</section>
-		
+
 	</div>
 </div>

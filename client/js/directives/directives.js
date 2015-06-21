@@ -152,17 +152,15 @@ app
 	}
 }])
 
-.directive('smThread', [ function(){
+.directive('smThread', [ 'forumFactory', function(forumFactory){
 	return {
 		restrict: "E",
-		template: "<div ng-include='getContent(x)'></div>",
+		template: "<div ng-include='getContent(threadName)'></div>",
 		scope: { 
 			myValue: "&myAttribute"
 		},
 		link: function ( scope, element, attrs ){
-			// console.log(scope.myValue());
-			// console.log(scope.myValue().thread);
-			scope.x = scope.myValue().thread;
+			scope.threadName = scope.myValue().thread;
 			
 			scope.currentPage = 0;
 		    scope.pageSize = 5;
@@ -184,16 +182,11 @@ app
 				}
 
 			];
-			scope.data = scope.posts;
-			// function getGeneralThreads(){
-			// 	forumFactory.getGeneralThreads(function(posts){
-			// 		$scope.posts = posts;
-			// 		console.log(posts)
-			// 		$scope.data = posts;
-			// 	})
-			// }
-
-			// getGeneralThreads();
+			forumFactory.getGeneralThreads(function(posts){
+				console.log('1');
+				scope.posts = posts;
+				scope.data = posts;
+			})
 
 			scope.getContent = function(data){
 				scope.sample = "sample!";

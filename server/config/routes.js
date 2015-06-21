@@ -1,31 +1,11 @@
 module.exports = function(app) {
-  	var users = require('../controllers/users.js')
-  	var sessions = require('../controllers/sessions.js')
-  	var forums = require('../controllers/forums.js')
-	var threads = require('../controllers/threads.js')
+  	var users = require('../controllers/users.js');
+  	var sessions = require('../controllers/sessions.js');
+	var threads = require('../controllers/threads.js');
 
+  	var sql = require('../config/sql.js');
 
-  	var sql = require('../config/sql.js')
-
-  	// Root
-    app.get('/', function(request, response) {
-	  // users.retrieve(request, response)
-	  // response.render('index.ejs')
-	  // response.json
-		// sql.retrieve(request, response);
-		response.render('guest.ejs')
-
-	})
-	app.get('/dashboard', function(request, response){
-		if (request.session.auth == '5389uhyjw0ju0589j03h89jw3890') {
-			response.render('user.ejs', {auth:request.session.auth_validation})
-		}
-		else {
-			request.session.auth = undefined;
-			response.redirect('/')
-		}
-
-	})
+	
 
 // User
 
@@ -63,10 +43,10 @@ module.exports = function(app) {
   
 // Threads - CRUD
 
-	// GUEST
-
 	// Get all General Posts
-	app.get('/threads/general.json',function(request, response) { threads.general(request, response) })
+	app.get('/threads/general.json',function(request, response) { 
+		threads.general(request, response) 
+	})
 	// Get Post and it's Comments
 	app.get('/threads/getPostnComments.json/:id',function(request, response) { threads.getPostnComments(request, response) })
 
@@ -81,16 +61,6 @@ module.exports = function(app) {
 
 	app.post('/threads/addComment.json', function(request, response) { threads.addComment(request, response) })
 	
-
-	// USER
-
-	// Get all Posts (user)
-	app.get('/threads/allthreads.json',function(request, response) { 
-		console.log("ALL REQUEST")
-		threads.allthreads(request, response) 
-	})
-	
-
 
 
 
