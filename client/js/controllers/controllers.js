@@ -31,11 +31,15 @@ app
 })
 
 .controller('DashboardController', function($scope, SessionFactory) {
+	this.loggedIn = false;
 	this.login = function(user){
 		console.log("LOGIN")
 		SessionFactory.create(user, function(server_response){
-			if (server_response.status)
+			if (server_response.status){
+				this.loggedIn = true;
+
 				$scope.errors = "";
+			}
 			else {
 				if(server_response.attempt == 5)
 					$scope.errors = "Too many attemps, try again later...";

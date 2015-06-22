@@ -1,7 +1,7 @@
 app
 
 
-.directive('smThread', [ 'forumFactory', function(forumFactory){
+.directive('smThread', [ 'ForumFactory', function(ForumFactory){
 	return {
 		restrict: "E",
 		template: "<div ng-include='getContent(threadName)'></div>",
@@ -18,7 +18,7 @@ app
 			 	return Math.ceil(scope.data.length/scope.pageSize);                
 		    }
 
-			forumFactory.getThread( {threadName: scope.threadName}, function(posts){
+			ForumFactory.getThread( {threadName: scope.threadName}, function(posts){
 				scope.posts = posts;
 				scope.data = posts;
 			})
