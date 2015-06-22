@@ -2,7 +2,7 @@ module.exports = (function(app) {
 	var users = [];
 
 	io.sockets.on('connection', function(socket) { // on connection
-
+		console.log(socket.id);
 		socket.on('add_user', function(user){
 			console.log("@@@@ ", user)
 			users.push({socket: socket.id, name:user.newUser})

@@ -3,9 +3,15 @@ module.exports = function(app) {
   	var sessions = require('../controllers/sessions.js');
 	var threads = require('../controllers/threads.js');
 
-  	var sql = require('../config/sql.js');
+  	// var sql = require('../config/sql.js');
 
-	
+	app.post('/threads/retrieve.json', function(request, response) { 
+		console.log("S | routes.js - app.post('/threads/retrieve.json')");
+		threads.retrieve(request, response);
+	})
+	app.get('/post/:id',function(request, response) { 
+		threads.getPostComments(request, response) 
+	})
 
 // User
 
@@ -44,22 +50,20 @@ module.exports = function(app) {
 // Threads - CRUD
 
 	// Get all General Posts
-	app.get('/threads/general.json',function(request, response) { 
-		threads.general(request, response) 
-	})
+
 	// Get Post and it's Comments
-	app.get('/threads/getPostnComments.json/:id',function(request, response) { threads.getPostnComments(request, response) })
+	// app.get('/threads/getPostnComments.json/:id',function(request, response) { threads.getPostnComments(request, response) })
 
-  // Index (R)
-	app.get('/threads', function(request, response) { threads.index(request, response) })
-	// Create (C)
-	app.post('/threads', function(request, response) { threads.create(request, response) })	
-	// Destroy app.delete('/threads/:id') (D)
-	app.post('/threads/:id/destroy', function(request, response) { threads.destroy(request, response) })
-	// Update app.put/patch('/threads/:id') (U)
-	app.post('/threads/:id/update', function(request, response) { threads.update(request, response) })
+ //  // Index (R)
+	// app.get('/threads', function(request, response) { threads.index(request, response) })
+	// // Create (C)
+	// app.post('/threads', function(request, response) { threads.create(request, response) })	
+	// // Destroy app.delete('/threads/:id') (D)
+	// app.post('/threads/:id/destroy', function(request, response) { threads.destroy(request, response) })
+	// // Update app.put/patch('/threads/:id') (U)
+	// app.post('/threads/:id/update', function(request, response) { threads.update(request, response) })
 
-	app.post('/threads/addComment.json', function(request, response) { threads.addComment(request, response) })
+	// app.post('/threads/addComment.json', function(request, response) { threads.addComment(request, response) })
 	
 
 

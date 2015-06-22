@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="col-12">
+		<h1>Post</h1>
+
+		<h3 ng-bind="post.title"></h3>
+		<p ng-bind="post.content"></p>
+
+		<hr>
+
+		<div ng-repeat="comment in comments | startFrom:currentPage*pageSize | limitTo:pageSize">
+			<span class='rating' ng-bind="comment.rating"></span>
+			<p class='content' ng-bind="comment.content"></p>
+			<hr>
+		</div>
+
+
+		<button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" class="btn btn-default">Previous</button>
+		<span ng-bind="currentPage+1"></span>/<span ng-bind="numberOfPages()"></span>
+		<button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1" class="btn btn-default">Next</button>
+
+	</div>
+</div>
+
+<!--  <textarea ng-model="newComment.content"></textarea>
+<button class="btn btn-primary" ng-click="addComment(newComment)">Comment</button> -->
+
+</div>
+
+

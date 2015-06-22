@@ -20,7 +20,6 @@ app.use(session({
 
 app.use(express.static(__dirname + '/client'))
 
-
 // Mongoose
 require('./server/config/mongoose.js');
 // SQL
@@ -28,7 +27,7 @@ require('./server/config/sql.js');
 // HTTP Routes`	
 require('./server/config/routes.js')(app);
 // Socket Routes
-// require('./server/config/socket.routes.js')(app);
+require('./server/config/socket.routes.js')(app);
 
 
 
