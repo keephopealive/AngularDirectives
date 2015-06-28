@@ -1,0 +1,16 @@
+<h1>Registration</h1>
+<h3 ng-bind="main.registerErrors"></h3>
+<input ng-model="main.newUser.first_name" placeholder="First Name"/>
+<input ng-model="main.newUser.last_name" placeholder="Last Name"/>
+<input ng-model="main.newUser.email" placeholder="Email"/>
+<input ng-model="main.newUser.password" placeholder="Password"/>
+<input ng-model="main.newUser.confirm_password" placeholder="Confirm Password"/>
+<button ng-click="main.register(main.newUser)">Register</button>
+
+<h1>Login</h1>
+<h3 ng-bind="main.loginErrors"></h3>
+<div ng-hide="main.loginTimeout">
+	<input ng-model="main.user.email" placeholder="Email"/>
+	<input ng-model="main.user.password" placeholder="Password"/>
+	<button ng-click="main.login(main.user)">Login</button>
+</div>

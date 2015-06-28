@@ -1,34 +1,40 @@
-app.factory('SessionFactory', function($http, $location) {
+angular.module('app')
+.factory('SessionFactory', function($http, $location) {
 
 	var factory = {};
 
 	factory.create = function(user, callback){
 		console.log("IN FACTORY SESSIONS");
 		$http.post('/sessions/authenticate', user).success(function(server_response){
-			console.log("in factory ", server_response)
-			if (server_response.status) {
+			console.log("in factory ", response)
+			if (response.status) {
 				console.log("SUCCESSFUL LOGIN");
 			}
 			else {
-				callback(server_response)
+				callback(response);
 			}
 		})
 	}
 
 	return factory;
 })
-.factory('UserFactory', function($http) {
 
-	var factory = {};
-
-	factory.create = function(newUser, callback){
-		$http.post('/users', newUser).success(function(server_response){
-			callback(server_response)
-		})
-	}
-
-	return factory;
+.factory('UserFactory', function($http, $location) {
+	return {
+		create: function(newUser){
+			console.log("Call to back end for login");
+			// $http.post('/users/create', newUser)
+			// .success(function(response){
+			// 	console.log('response: ', response)
+			// })
+		}
+	};
 })
+
+
+
+
+
 .factory('ForumFactory', function($http) {
 
 	var factory = {};

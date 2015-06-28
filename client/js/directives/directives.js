@@ -1,6 +1,4 @@
-app
-
-
+angular.module('app')
 .directive('smThread', [ 'ForumFactory', function(ForumFactory){
 	return {
 		restrict: "E",
@@ -8,10 +6,12 @@ app
 		scope: { 
 			myValue: "&myAttribute"
 		},
-		link: function ( scope, element, attrs ){
+		link: function ( scope, element, attrs, ctrl ){
 			scope.threadName = scope.myValue().thread;
 			
 			scope.currentPage = 0;
+			
+			// scope.currentPage = 0;
 		    scope.pageSize = 5;
 		    scope.data = [];
 		    scope.numberOfPages=function(){
@@ -24,7 +24,6 @@ app
 			})
 
 			scope.getContent = function(data){
-				scope.sample = "sample!";
 				return "/templates/thread.template.html";
 			}
 			

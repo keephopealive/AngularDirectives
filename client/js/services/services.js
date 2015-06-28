@@ -1,4 +1,4 @@
-app
+angular.module('app')
 .service( 'Book', [ '$rootScope', function( $rootScope ) {
 	this.books = [
 		{ title: "Magician", author: "Raymond E. Feist" },
